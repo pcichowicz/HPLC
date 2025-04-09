@@ -6,9 +6,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Example'
+project = 'HPLC Peak Detection & Automation'
 copyright = 'workshop participant'
-author = 'workshop participant'
+author = 'Patrick Cichowicz'
 release = '0.1'
 
 
