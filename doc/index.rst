@@ -1,7 +1,8 @@
 
------------------------------------
+-------------------
+
 About this Package
-===================================
+===================
 
 Welcome to this HPLC package designed to work with chromatogram data
 and automate peak detection and various downstream analysis. This package
