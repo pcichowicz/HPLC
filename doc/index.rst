@@ -46,7 +46,7 @@ Current dependencies for `HPLC` are as follows:
    :caption: Chromatography:
    :hidden:
 
-   some-feature.md
+   Using HPLC.md
    
 
 .. toctree::
