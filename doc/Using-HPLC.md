@@ -10,7 +10,8 @@ As the separated components exit the column, a detector measures their presence 
 There are many softwares that are capable of creating simple graphs and analysis, however they are often limited with customizatiom. This is where this package and many others available can be advantageous and be modified/changedto suit the desired needs.
 
 
-How  `HPLC` Works
+How  `HPLC` works
+
 The peak detection and quantification  in HPLC involves the following steps.
 
 1. Estimation of signal background using Statistical Nonlinear Iterative Peak (SNIP) estimation.
