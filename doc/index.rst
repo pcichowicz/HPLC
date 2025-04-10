@@ -37,7 +37,7 @@ Current dependencies for `HPLC` are as follows:
 .. _tqdm: https://tqdm.github.io/
 .. _Matplotlib: https://matplotlib.org/
 .. _Seaborn: https://seaborn.pydata.org/
-.. _Termcolor: https://pypi.org/project/termcolor/
+
 
 .. toctree::
    :maxdepth: 1
