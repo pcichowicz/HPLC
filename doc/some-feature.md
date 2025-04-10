@@ -1,8 +1,8 @@
 # High-Performace Liquid Chromatography
 
-High-performance liquid chromatography (HPLC) is a analytical technique that is able to separate compounds in a chemical mixture. This technique uses high pressure pumps to deliever the mixture that contains solvents (mobile phase) where it flows through the system which is then collected into a cylinder/column that is filled with solid particles made from absorbent
-material. The various solvents interact differently with the absorbent material, restulting in different migration rates for each component which allows for "separation" and using a specific detector to store this information. The output of the detector and software is a graph called a Chromatogram, a graphical representation of the singal intensity versus time as peaks which represent 
-individual components of the sample. Each component has its own respective time on the graph called "rentention time", and the area underneath the curve is proportional to the concentration present in the mixture.
+High-performance liquid chromatography (HPLC) is an analytical technique used to separate, identify, and quantify components in a chemical mixture. This technique employs high-pressure pumps to deliver the sample mixture, dissolved in a solvent (known as the mobile phase), through a tightly packed column filled with solid absorbent particles (the stationary phase). The different components in the mixture interact uniquely with the stationary phase, causing them to travel through the column at varying rates. This difference in migration allows for the separation of compounds.
+
+As the separated components exit the column, a detector measures their presence and generates a signal. The output is visualized as a graph called a chromatogram, which plots signal intensity versus time. Each peak on the chromatogram corresponds to a distinct compound in the sample. The position of a peak, known as the retention time, reflects the time it took for that compound to travel through the column. Additionally, the area under each peak is proportional to the concentration of the corresponding compound in the mixture.
 
 
 ## Subsection
