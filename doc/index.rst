@@ -1,3 +1,5 @@
+.. :image:: HPLC_image.png
+   :align: center
 
 -------------------
 
