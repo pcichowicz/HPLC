@@ -42,6 +42,7 @@ Current dependencies for `HPLC` are as follows:
 .. toctree::
    :maxdepth: 1
    :caption: Chromatography:
+   :hidden:
 
    some-feature.md
    
@@ -49,5 +50,6 @@ Current dependencies for `HPLC` are as follows:
 .. toctree::
    :maxdepth: 1
    :caption: How it works:
+   :hidden:
 
    another-feature.md
