@@ -16,6 +16,28 @@ days, however the cleaning and process of the data generated still needs
 some manual labor. This `HPLC` package is designed to eliminate most of
 the manual labor so our time can be spent troubleshooting other problems.
 
+Installation
+------------
+You can install `HPLC` using pip::
+
+   $ pip install --upgrade hplc-py
+
+Current dependencies for `HPLC` are as follows:
+
+- Python 3.9 or newer
+- NumPy_ 
+- SciPy_
+- Pandas_
+- Seaborn_
+- Tqdm_
+
+.. _NumPy: http://www.numpy.org/
+.. _SciPy: http://www.scipy.org/
+.. _Pandas: http://pandas.pydata.org/
+.. _tqdm: https://tqdm.github.io/
+.. _Matplotlib: https://matplotlib.org/
+.. _Seaborn: https://seaborn.pydata.org/
+.. _Termcolor: https://pypi.org/project/termcolor/
 
 .. toctree::
    :maxdepth: 1
