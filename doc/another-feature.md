@@ -23,15 +23,15 @@ time,signal
 19.98367,-0.00078  
 19.992,0.00062  
 
-Loading the text file is done with one line of command
+Loading the text file is done with one line of command using `hplc.io.load_chromatogram()` that will create the required DataFrame object that will be used with the `Chromatogram` class.
 
 ```python
   df = hplc.io.load_chromatogram("data.csv",
-['time', 'signal'])
+                                ['time', 'signal'])
 ```
 
 
-| time  |  singal |
+| time  |  signal |
 | ---- | ------ |
 | 0.0  | 0.00037|
 | 0.00833 | -0.00135 |
@@ -46,31 +46,3 @@ Loading the text file is done with one line of command
 | 19.98367 | -0.00078 |
 | 19.992 | 0.00062 |
 
-
-## Code blocks
-
-The following is a Python code block:
-```python
-  def hello():
-      print("Hello world")
-```
-
-And this is a C code block:
-```c
-#include <stdio.h>
-int main()
-{
-    printf("Hello, World!");
-    return 0;
-}
-```
-
-
-## Math
-
-This creates an equation:
-```{math}
-a^2 + b^2 = c^2
-```
-
-This is an in-line equation, {math}`a^2 + b^2 = c^2`, embedded in text.
