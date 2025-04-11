@@ -1,6 +1,21 @@
 .. image:: _static/HPLC_image.png
    :align: center
 
+.. image:: https://img.shields.io/badge/License-GPLv3-blue.svg
+   :target: https://www.gnu.org/licenses/gpl-3.0
+
+.. image:: https://github.com/pcichowicz/HPLC/actions/workflows/pytest.yaml/badge.svg
+   :target: https://github.com/pcichowicz/HPLC/actions/workflows/pytest.yaml
+
+.. image:: https://codecov.io/gh/pcichowicz/HPLC/branch/main/graph/badge.svg?token=WXL50JVR6C
+   :target: https://codecov.io/gh/pcichowicz/HPLC
+ 
+.. image:: https://badge.fury.io/py/HPLC.svg
+   :target: https://pypi.org/project/HPLC/#description 
+
+.. image:: https://joss.theoj.org/papers/10.21105/joss.06270/status.svg
+   :target: https://doi.org/10.21105/joss.06270
+
 -------------------
 
 About this Package
