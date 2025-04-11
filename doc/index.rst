@@ -1,4 +1,4 @@
-.. :image:: src/HPLC_image.png
+.. image:: _static/HPLC_image.png
    :align: center
 
 -------------------
