@@ -1,4 +1,4 @@
-# Step 1 - Loading the data
+# Step 1 - Loading & viewing the data
 
 Notebook Code: [![License: MIT](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) Notebook Prose: [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
@@ -45,4 +45,14 @@ Loading the text file is done with one line of command using `hplc.io.load_chrom
 | 19.97534 | -0.00095 |
 | 19.98367 | -0.00078 |
 | 19.992 | 0.00062 |
+
+## Viewing the data
+
+To view the raw chromatogram data, you load the DataFrame into the `Chromatogram` object that has simple methods for viewing and cropping the plot.
+
+```python
+  chromatogram = Chromatogram(df)
+
+  chromatogram.show()
+```
 
