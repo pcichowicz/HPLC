@@ -30,7 +30,6 @@ Loading the text file is done with one line of command using `hplc.io.load_chrom
                                 ['time', 'signal'])
 ```
 
-
 | time  |  signal |
 | ---- | ------ |
 | 0.0  | 0.00037|
@@ -48,11 +47,21 @@ Loading the text file is done with one line of command using `hplc.io.load_chrom
 
 ## Viewing the data
 
-To view the raw chromatogram data, you load the DataFrame into the `Chromatogram` object that has simple methods for viewing and cropping the plot.
+The `Chromatogram` class has methods for viewing, cropping and quantification of the raw chromatogram data. Using the `Chromatogram` class to initialize a new class object, followed by `.show()` on the newly created object you can view the raw chromatogram.
 
 ```python
   chromatogram = Chromatogram(df)
 
   chromatogram.show()
 ```
+![](https://github.com/pcichowicz/HPLC/blob/main/doc/plots/Chrom_raw.png)
+
+It is also possible to crop the plot to the desired window of interest for better resolution if there are multiple peaks overlapping. In this instance that is not the case, however lets crop and focus on the third peak in the chromatogram.
+
+```python
+  chromatogram.crop([10,20])
+
+  chromatogram.show()
+```
+![](https://github.com/pcichowicz/HPLC/blob/main/doc/plots/Chrom_raw_crop.png)
 
