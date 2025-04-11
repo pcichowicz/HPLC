@@ -1,4 +1,4 @@
-.. image:: _static/HPLC_image.png
+.. image:: _static/HPLC_Logo.svg
    :align: center
 
 .. image:: https://img.shields.io/badge/License-GPLv3-blue.svg
