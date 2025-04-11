@@ -4,8 +4,9 @@
 .. image:: https://img.shields.io/badge/License-GPLv3-blue.svg
    :target: https://www.gnu.org/licenses/gpl-3.0
 
-.. image:: https://github.com/pcichowicz/HPLC/actions/workflows/pytest.yaml/badge.svg
-   :target: https://github.com/pcichowicz/HPLC/actions/workflows/pytest.yaml
+.. image:: https://www.repostatus.org/badges/latest/wip.svg
+   :alt: Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.
+   :target: https://www.repostatus.org/#wip
 
 .. image:: https://codecov.io/gh/pcichowicz/HPLC/branch/main/graph/badge.svg?token=WXL50JVR6C
    :target: https://codecov.io/gh/pcichowicz/HPLC
@@ -13,8 +14,6 @@
 .. image:: https://badge.fury.io/py/HPLC.svg
    :target: https://pypi.org/project/HPLC/#description 
 
-.. image:: https://joss.theoj.org/papers/10.21105/joss.06270/status.svg
-   :target: https://doi.org/10.21105/joss.06270
 
 -------------------
 
