@@ -68,4 +68,5 @@ Current dependencies for `HPLC` are as follows:
    :caption: How it works:
    :hidden:
 
-   Step_1.md
+   Loading_Viewing.md
+   Peak_Detection.md
