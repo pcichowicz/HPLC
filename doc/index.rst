@@ -34,9 +34,7 @@ the manual labor so our time can be spent troubleshooting other problems.
 
 Installation
 ------------
-You can install `HPLC` using pip::
-
-   $ pip install --upgrade hplc-py
+Package is still in development, installation will be available at a later date.
 
 Current dependencies for `HPLC` are as follows:
 
