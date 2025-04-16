@@ -56,6 +56,9 @@ The `Chromatogram` class has methods for viewing, cropping and quantification of
 
 ![](https://github.com/pcichowicz/HPLC/blob/main/doc/plots/Chrom_raw.png)
 
+![](https://raw.githubusercontent.com/pcichowicz/HPLC/main/doc/plots/Chrom_raw.png)
+
+
 It is also possible to crop the plot to the desired window of interest for better resolution if there are multiple peaks overlapping. In this instance that is not the case, however lets crop and focus on the third peak in the chromatogram.
 
 ```python
