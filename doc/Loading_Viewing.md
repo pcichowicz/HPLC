@@ -54,8 +54,6 @@ The `Chromatogram` class has methods for viewing, cropping and quantification of
   chromatogram.show()
 ```
 
-![](https://github.com/pcichowicz/HPLC/blob/main/doc/plots/Chrom_raw.png)
-
 ![](https://raw.githubusercontent.com/pcichowicz/HPLC/main/doc/plots/Chrom_raw.png)
 
 
@@ -67,5 +65,5 @@ It is also possible to crop the plot to the desired window of interest for bette
   chromatogram.show()
 ```
 
-![](https://github.com/pcichowicz/HPLC/blob/main/doc/plots/Chrom_raw_crop.png)
+![][(https://github.com](https://raw.githubusercontent.com)/pcichowicz/HPLC/blob/main/doc/plots/Chrom_raw_crop.png)
 
