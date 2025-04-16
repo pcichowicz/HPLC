@@ -54,6 +54,7 @@ The `Chromatogram` class has methods for viewing, cropping and quantification of
 
   chromatogram.show()
 ```
+
 ![](https://github.com/pcichowicz/HPLC/blob/main/doc/plots/Chrom_raw.png)
 
 It is also possible to crop the plot to the desired window of interest for better resolution if there are multiple peaks overlapping. In this instance that is not the case, however lets crop and focus on the third peak in the chromatogram.
@@ -63,5 +64,6 @@ It is also possible to crop the plot to the desired window of interest for bette
 
   chromatogram.show()
 ```
+
 ![](https://github.com/pcichowicz/HPLC/blob/main/doc/plots/Chrom_raw_crop.png)
 
