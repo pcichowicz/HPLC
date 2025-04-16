@@ -65,5 +65,5 @@ It is also possible to crop the plot to the desired window of interest for bette
   chromatogram.show()
 ```
 
-![](https://raw.githubusercontent.com/pcichowicz/HPLC/blob/main/doc/plots/Chrom_raw_crop.png)
+![](https://raw.githubusercontent.com/pcichowicz/HPLC/main/doc/plots/Chrom_raw_crop.png)
 
