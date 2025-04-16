@@ -6,7 +6,6 @@ Notebook Code: [![License: MIT](https://img.shields.io/badge/License-GPLv3-blue.
 
 Part of the `HPLC` package includes the data loading method called `load_chromatogram` that takes in text files of chromatogram data and reads it into a pandas DataFrame. The text file should be similar to something like this:
 
-
 Metadata line 1  
 Metadata line 2  
 
