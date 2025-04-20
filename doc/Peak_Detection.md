@@ -2,16 +2,6 @@
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
 
-
-
-
-
-
-
-
-Subtracting this baseline estimate ($S'$) from the original signal ($S$) yields the "true signal" of the chromatogram. In the HPLC package, this process is wrapped in the .correct_baseline() method:
-
-
 # Step 2 - Peak Detection
 
 Notebook Code: [![License: MIT](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) Notebook Prose: [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
@@ -65,13 +55,30 @@ Subtraction of S - S' will remove the baseline signal and we are left with the "
  chromatogram.show()
 ```
 
+![](https://raw.githubusercontent.com/pcichowicz/HPLC/main/doc/plots/Chrom_baseline.png)
+
 
 ## Detection of peaks
 
-After the background noise is dealt with, the main functions of the `HPLC` package can perform their jobs. By calling `.fit_peaks()`, the deconvolution of the singal to separate peaks (and parameters/properties) is performed internally by the function. This involves the baseline correction, detecting the peaks, fitting of the peaks (using skew-normal distributions) and storing the properies of each peak and its respective window/ peak ID.
+After the background noise is dealt with, the main functions of the `HPLC` package can perform their jobs. By calling `.fit_peaks()`, the deconvolution of the singal to separate peaks (and parameters/properties) is performed internally by the function. This involves the baseline correction, detecting the peaks, fitting of the peaks (using skew-normal distributions) and storing the properies of each peak and its respective window/ peak ID that can be viewed with the `.peaks` attribute.
+
+```python
+  print(chromatogram.peaks)
+```
+| retention_time | scale     | skew      | amplitude    | area         | signal_maximum | peak_id |
+|----------------|-----------|-----------|--------------|--------------|----------------|---------|
+| 3.0            | 0.400160  | -1.999821 | 15008.455200 | 1.801735e+06 | 22242.892379   | 1       |
+| 7.7            | 0.500310  | -3.001308 | 17012.559464 | 2.042324e+06 | 22371.019867   | 2       |
+| 8.0            | 0.600196  | 3.002446  | 30010.640624 | 3.602718e+06 | 32896.019777   | 3       |
+| 14.0           | 0.500253  | 1.999881  | 17011.602891 | 2.042209e+06 | 20167.152113   | 4       |
 
 ```python
   chromatogram.fit_peaks()
 
   chromatogram.show()
 ```
+
+![](https://raw.githubusercontent.com/pcichowicz/HPLC/main/doc/plots/Chrom_fitpeaks.png)
+
+
+
