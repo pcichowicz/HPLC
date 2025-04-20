@@ -53,3 +53,14 @@ Subtraction of S - S' will remove the baseline signal and we are left with the "
 
  chromatogram.show()
 ```
+
+
+## Detection of peaks
+
+After the background noise is dealt with, the main functions of the `HPLC` package can perform their jobs. By calling `.fit_peaks()`, the deconvolution of the singal to separate peaks (and parameters/properties) is performed by the following steps that are called internally by the function. This involves the baseline correction, detecting the peaks, fitting of the peaks (using skew-normal distributions) and storing the properies of each peak and its respective window/ peak ID.
+
+```python
+  chromatogram.fit_peaks()
+
+  chromatogram.show()
+```
