@@ -7,7 +7,7 @@ As the separated components exit the column, a detector measures their presence 
 
 ## Manual to Automated
 
-There are many softwares that are capable of creating simple graphs and analysis, however they are often limited with customizatiom. This is where this package and many others available can be advantageous and be modified/changedto suit the desired needs.
+There are many software tools capable of creating simple graphs and performing basic analysis; however, they are often limited in terms of customization. This is where this package—and many others like it—becomes advantageous, as it can be modified and extended to suit specific needs.
 
 
 How  `HPLC` works
@@ -15,9 +15,9 @@ How  `HPLC` works
 The peak detection and quantification  in HPLC involves the following steps.
 
 1. Estimation of signal background using Statistical Nonlinear Iterative Peak (SNIP) estimation.
-2. Using peak maxima with thresholds, automatic peak detection is done
-3. Chromatogram is divided into "peak windows" where one peak is present, if a window is heavily overlapped with singal then the peaks are grouped into a single winodw.
-4. Windoes with N peaks, skew-normal distributions are inferred with peak properties (location, maximum value, and width at half-maximum) as initial guesses. Each window in the chromatogram is inferred in this way.
-5. Each distributions expected signal is computed with best-fit parameters, then the integrated signal over the entire peak is computed and stored.
+2. Using peak maxima with thresholds, automatic peak detection is performed
+3. Division of the chromatogram into "peak windows", where each window ideally contains a single peak. If a region contains overlapping peaks, they are grouped into a single window.
+4. For windows with multiple peaks, skew-normal distributions are fitted using initial guesses based on peak properties such as retention time, maximum signal, and width at half-maximum.
+5. Each distribution’s expected signal is computed using the best-fit parameters, and the integrated area under each peak is calculated and stored.
 
-The rest of the notebook will go into more detail for each part.
+The remainder of this notebook will walk through each of these steps in detail.
