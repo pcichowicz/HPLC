@@ -23,7 +23,7 @@ To infer the baseline signal and subtract it from the observed signal, we apply 
 
 ### Log-transformation 
 
-The first step in determining the baseline involves reducing the dynamic range of the signal data *S* using a _Linear Least Squares_ (LLS) approximation. This transformation prevents large peaks from dominating the filtering which can lead to the removal of smaller and still important peaks. The compression  $S \rightarrow S_{LLS}$ is achieved mathematically using 
+The first step in determining the baseline involves reducing the dynamic range of the signal data *S* using a _Linear Least Squares_ (LLS) approximation. This transformation prevents large peaks from dominating the filtering which can lead to the removal of smaller and still important peaks. The compression  $S\rightarrow S_{LLS}$ is achieved mathematically using 
 
 $$
 S_{LLS} = \ln \left[ \ln \left( \sqrt{S + 1} + 1 \right) + 1 \right]
