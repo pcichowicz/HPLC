@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Step 2 - Peak Detection &mdash; HPLC Peak Detection &amp; Automation 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Step 1 - Loading &amp; viewing the data" href="Loading_Viewing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #3C3E47" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/HPLC_image.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chromatography:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Using-HPLC.html">High-Performace Liquid Chromatography</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How it works:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Loading_Viewing.html">Step 1 - Loading &amp; viewing the data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Step 2 - Peak Detection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#baseline-correction">Baseline correction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#log-transformation">Log-transformation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iterative-minimum-filtering">Iterative Minimum Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inverse-transformation-and-subtraction">Inverse transformation and subtraction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#detection-of-peaks">Detection of peaks</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #3C3E47" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">HPLC Peak Detection & Automation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Step 2 - Peak Detection</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Peak_Detection.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<section id="step-2-peak-detection">
+<h1>Step 2 - Peak Detection<a class="headerlink" href="#step-2-peak-detection" title="Link to this heading"></a></h1>
+<p>Notebook Code: <a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0"><img alt="License: MIT" src="https://img.shields.io/badge/License-GPLv3-blue.svg" /></a> Notebook Prose: <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/"><img alt="License: CC BY 4.0" src="https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg" /></a></p>
+<section id="baseline-correction">
+<h2>Baseline correction<a class="headerlink" href="#baseline-correction" title="Link to this heading"></a></h2>
+<p>Ideally, running a blank HPLC sample should result in a steady, zero or near-zero absorbance throughout the run. However, in reality, many factors disrupt this baseline. These disturbances introduce noise, which can impact the final analysis. Common sources include:</p>
+<ul class="simple">
+<li><p>Maintenance of the HPLC valves, flow cells, and UV detectors</p></li>
+<li><p>Temperature fluctuations of the laboratory during the day</p></li>
+<li><p>Mobile phase mixing</p></li>
+<li><p>Incomplete mobile phase degassing</p></li>
+</ul>
+<p>To infer the baseline signal and subtract it from the observed signal, we apply a series of transformations:</p>
+<ul class="simple">
+<li><p>Log-transformation of the signal</p></li>
+<li><p>Iterative Minimum Filtering</p></li>
+<li><p>Inverse Transformation and Subtraction</p></li>
+</ul>
+<section id="log-transformation">
+<h3>Log-transformation<a class="headerlink" href="#log-transformation" title="Link to this heading"></a></h3>
+<p>The first step in determining the baseline involves reducing the dynamic range of the signal data <em>S</em> using a <em>Linear Least Squares</em> (LLS) approximation. This transformation prevents large peaks from dominating the filtering which can lead to the removal of smaller and still important peaks. The compression  $S\rightarrow S_{LLS}$ is achieved mathematically using</p>
+<p>$$
+S_{LLS} = \ln \left[ \ln \left( \sqrt{S + 1} + 1 \right) + 1 \right]
+$$</p>
+<p>where the square root operation enhances smaller peaks, while the log operator compresses larger peaks — scaling the signal to a narrower, more balanced range.</p>
+</section>
+<section id="iterative-minimum-filtering">
+<h3>Iterative Minimum Filtering<a class="headerlink" href="#iterative-minimum-filtering" title="Link to this heading"></a></h3>
+<p>Since peaks are considered “postive deviations” compared to the baseline, the local minimum would reflect the baseline. The iteration “erodes” the peaks gradually until only the baseline is left. This process is repeated several times until a smooth, baseline-only signal is obtained.</p>
+<p>$$
+S_{LLS_{m}}^{\prime} (t) = min \left[ S_{LLS_{m-1}} (t), \frac{S_{LLS_{m-1}} (t-m) + S_{LLS_{m-1}} (t+m)}{2} \right]
+$$</p>
+</section>
+<section id="inverse-transformation-and-subtraction">
+<h3>Inverse transformation and subtraction<a class="headerlink" href="#inverse-transformation-and-subtraction" title="Link to this heading"></a></h3>
+<p>Once we have the signal filtered and smoothed down to reflect the baseline, the $S_{LLS}$ can be then passed through the inverse LLS transformation to expand the range back to the scale of the original observed data.</p>
+<p>$$
+S’ = \left( \exp \left[ \exp \left( S’_{LLS} \right) -1 \right] -1 \right)^2 -1
+$$</p>
+<p>Subtraction of S - S’ will remove the baseline signal and we are left with the “true signal” of the chromatogram. In the <code class="docutils literal notranslate"><span class="pre">HPLC</span></code> package, there is a method called <code class="docutils literal notranslate"><span class="pre">.correct_baseline()</span></code> that will perform all of these transformations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="n">chromatogram</span><span class="o">.</span><span class="n">correct_baseline</span><span class="p">()</span>
+
+ <span class="n">chromatogram</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="" src="https://raw.githubusercontent.com/pcichowicz/HPLC/main/doc/plots/Chrom_baseline.png" /></p>
+</section>
+</section>
+<section id="detection-of-peaks">
+<h2>Detection of peaks<a class="headerlink" href="#detection-of-peaks" title="Link to this heading"></a></h2>
+<p>After the background noise is dealt with, the main functions of the <code class="docutils literal notranslate"><span class="pre">HPLC</span></code> package can perform their jobs. By calling <code class="docutils literal notranslate"><span class="pre">.fit_peaks()</span></code>, the deconvolution of the singal to separate peaks (and parameters/properties) is performed internally by the function. This involves :</p>
+<ul class="simple">
+<li><p>the baseline correction</p></li>
+<li><p>detection of peaks (location, amplitude, range,etc)</p></li>
+<li><p>fitting of the peaks (using skew-normal distributions)</p></li>
+<li><p>storing the properies of each peak and its respective window/ peak ID</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="nb">print</span><span class="p">(</span><span class="n">chromatogram</span><span class="o">.</span><span class="n">peaks</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>retention_time</p></th>
+<th class="head"><p>scale</p></th>
+<th class="head"><p>skew</p></th>
+<th class="head"><p>amplitude</p></th>
+<th class="head"><p>area</p></th>
+<th class="head"><p>signal_maximum</p></th>
+<th class="head"><p>peak_id</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>3.0</p></td>
+<td><p>0.400160</p></td>
+<td><p>-1.999821</p></td>
+<td><p>15008.455200</p></td>
+<td><p>1.801735e+06</p></td>
+<td><p>22242.892379</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>7.7</p></td>
+<td><p>0.500310</p></td>
+<td><p>-3.001308</p></td>
+<td><p>17012.559464</p></td>
+<td><p>2.042324e+06</p></td>
+<td><p>22371.019867</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>8.0</p></td>
+<td><p>0.600196</p></td>
+<td><p>3.002446</p></td>
+<td><p>30010.640624</p></td>
+<td><p>3.602718e+06</p></td>
+<td><p>32896.019777</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>14.0</p></td>
+<td><p>0.500253</p></td>
+<td><p>1.999881</p></td>
+<td><p>17011.602891</p></td>
+<td><p>2.042209e+06</p></td>
+<td><p>20167.152113</p></td>
+<td><p>4</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="n">chromatogram</span><span class="o">.</span><span class="n">fit_peaks</span><span class="p">()</span>
+
+  <span class="n">chromatogram</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="" src="https://raw.githubusercontent.com/pcichowicz/HPLC/main/doc/plots/Chrom_fitpeaks.png" /></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Loading_Viewing.html" class="btn btn-neutral float-left" title="Step 1 - Loading &amp; viewing the data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright workshop participant.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

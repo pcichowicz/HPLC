@@ -1,0 +1,205 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Step 1 - Loading &amp; viewing the data &mdash; HPLC Peak Detection &amp; Automation 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Step 2 - Peak Detection" href="Peak_Detection.html" />
+    <link rel="prev" title="High-Performace Liquid Chromatography" href="Using-HPLC.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #3C3E47" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/HPLC_image.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chromatography:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Using-HPLC.html">High-Performace Liquid Chromatography</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How it works:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Step 1 - Loading &amp; viewing the data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#loading-chromatograms">Loading Chromatograms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#viewing-the-data">Viewing the data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Peak_Detection.html">Step 2 - Peak Detection</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #3C3E47" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">HPLC Peak Detection & Automation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Step 1 - Loading &amp; viewing the data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Loading_Viewing.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="step-1-loading-viewing-the-data">
+<h1>Step 1 - Loading &amp; viewing the data<a class="headerlink" href="#step-1-loading-viewing-the-data" title="Link to this heading"></a></h1>
+<p>Notebook Code: <a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0"><img alt="License: MIT" src="https://img.shields.io/badge/License-GPLv3-blue.svg" /></a> Notebook Prose: <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/"><img alt="License: CC BY 4.0" src="https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg" /></a></p>
+<section id="loading-chromatograms">
+<h2>Loading Chromatograms<a class="headerlink" href="#loading-chromatograms" title="Link to this heading"></a></h2>
+<p>Part of the <code class="docutils literal notranslate"><span class="pre">HPLC</span></code> package includes the data loading method called <code class="docutils literal notranslate"><span class="pre">load_chromatogram</span></code> that takes in text files of chromatogram data and reads it into a pandas DataFrame. The text file should be similar to something like this:</p>
+<p>Metadata line 1<br />
+Metadata line 2</p>
+<p>time,signal<br />
+0.0,0.00037<br />
+0.00833,-0.00135<br />
+0.01666,-0.00244<br />
+0.02499,0.00208<br />
+0.03332,2e-05<br />
+…<br />
+19.95868,0.00044<br />
+19.96701,-0.00057<br />
+19.97534,-0.00095<br />
+19.98367,-0.00078<br />
+19.992,0.00062</p>
+<p>Loading the text file is done with one line of command using <code class="docutils literal notranslate"><span class="pre">hplc.io.load_chromatogram()</span></code> that will create the required DataFrame object that will be used with the <code class="docutils literal notranslate"><span class="pre">Chromatogram</span></code> class.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="n">df</span> <span class="o">=</span> <span class="n">hplc</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_chromatogram</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">,</span>
+                                <span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;signal&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>time</p></th>
+<th class="head"><p>signal</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.00037</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.00833</p></td>
+<td><p>-0.00135</p></td>
+</tr>
+<tr class="row-even"><td><p>0.01666</p></td>
+<td><p>-0.00244</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.02499</p></td>
+<td><p>0.00208</p></td>
+</tr>
+<tr class="row-even"><td><p>0.03332</p></td>
+<td><p>2e-05</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.04165</p></td>
+<td><p>-1e-05</p></td>
+</tr>
+<tr class="row-even"><td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p>19.95868</p></td>
+<td><p>0.00044</p></td>
+</tr>
+<tr class="row-even"><td><p>19.96701</p></td>
+<td><p>-0.00057</p></td>
+</tr>
+<tr class="row-odd"><td><p>19.97534</p></td>
+<td><p>-0.00095</p></td>
+</tr>
+<tr class="row-even"><td><p>19.98367</p></td>
+<td><p>-0.00078</p></td>
+</tr>
+<tr class="row-odd"><td><p>19.992</p></td>
+<td><p>0.00062</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="viewing-the-data">
+<h2>Viewing the data<a class="headerlink" href="#viewing-the-data" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Chromatogram</span></code> class has methods for viewing, cropping and quantification of the raw chromatogram data. Using the <code class="docutils literal notranslate"><span class="pre">Chromatogram</span></code> class to initialize a new class object, followed by <code class="docutils literal notranslate"><span class="pre">.show()</span></code> on the newly created object you can view the raw chromatogram.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="n">chromatogram</span> <span class="o">=</span> <span class="n">Chromatogram</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+  <span class="n">chromatogram</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="" src="https://raw.githubusercontent.com/pcichowicz/HPLC/main/doc/plots/Chrom_raw.png" /></p>
+<p>It is also possible to crop/zoom the plot to the desired window of interest for better resolution if there are multiple peaks overlapping.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="n">chromatogram</span><span class="o">.</span><span class="n">crop</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+
+  <span class="n">chromatogram</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="" src="https://raw.githubusercontent.com/pcichowicz/HPLC/main/doc/plots/Chrom_crop.png" /></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Using-HPLC.html" class="btn btn-neutral float-left" title="High-Performace Liquid Chromatography" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Peak_Detection.html" class="btn btn-neutral float-right" title="Step 2 - Peak Detection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright workshop participant.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
