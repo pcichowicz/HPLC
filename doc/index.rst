@@ -68,3 +68,5 @@ Current dependencies for `HPLC` are as follows:
 
    Loading_Viewing.md
    Peak_Detection.md
+
+`Click here to head to github repo <https://github.com/pcichowicz/HPLC>`_
