@@ -1,1 +1,17 @@
 _build/
+
+# Default ignored files
+/shelf/
+/.idea/workspace.xml
+create_structure.py
+tests/
+main.py
+
+.venv/
+.idea/
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.ipynb_checkpoints
